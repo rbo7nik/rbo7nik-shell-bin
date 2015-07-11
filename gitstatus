@@ -1,0 +1,51 @@
+#! /bin/sh
+
+# Color customization for reporting
+blue="\033[0;34m"
+brightblue="\033[1;34m"
+cyan="\033[0;36m"
+brightcyan="\033[1;36m"
+green="\033[0;32m"
+brightgreen="\033[1;32m"
+red="\033[0;31m"
+brightred="\033[1;31m"
+white="\033[1;37m"
+black="\033[0;30m"
+grey="\033[0;37m"
+darkgrey="\033[1;30m"
+#ec stands for end color
+ec="\033[0m"
+
+#directory where your code exists
+DIR="$HOME/code/"
+
+
+if [ -z "$1" ] ; then	 
+	# checks if argument is passed to script
+	echo "$brightred No argument$ec$brightblue given.. Don't know which directory to work on! $ec"
+else
+	# changes directory to whichever code base you are working with (e.g. "cs")
+	cd "$DIR$1"	
+	# returns the current branch you are on
+	branch=`git rev-parse --abbrev-ref HEAD`
+fi
+
+# checks if your git repo needs to be updated with upstream
+if [ -z "$(git status --porcelain)" ]; then 
+  # Working directory clean
+  # Can customize voice message
+  # say -v 'Milena' -r 250 ""
+  echo
+  echo "$brightblue . . . $1 branch($ec$brightred $branch $ec$brightblue) doesn't need to be updated yet . . .$ec"
+  echo "$brightblue . . . I'm going back to sleep . . .$ec"  
+  echo
+else   
+  # If directory/branch needs to be updated
+  # Prints to STDOUT and also speaks to you	
+  echo
+  echo "$brightblue . . . ($ec$brightred $branch $ec$brightblue) needs to be updated for$ec$white $1 $ec$brightblue code-base . . .$ec"
+  echo "$brightblue . . . Do something about it . . .$ec" 
+  echo 
+  # custom speech message will play audio
+  say -v 'Milena' -r 250 "Nik, тебе пора про update ить $branch branch для $1$ec"
+fi

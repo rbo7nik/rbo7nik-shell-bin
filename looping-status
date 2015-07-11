@@ -1,0 +1,14 @@
+#! /bin/sh
+# pre-req: the "gitstatus" parent folder should be in your $PATH variable
+# on my machine it's in my custom ~/bin directory and is exported in my ~/.zshrc file
+while :
+do 
+	# passes "cs" argument to gitstatus branch (main application)
+	gitstatus cs
+	# wait 60 seconds
+	sleep 60 
+	# passes "cs" argument to gitstatus branch (automation)
+	gitstatus automation
+	# wait 60 seconds
+	sleep 60
+done	

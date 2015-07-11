@@ -1,0 +1,14 @@
+#! /usr/local/bin/python
+
+import sys
+
+# special_chars = ['~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
+# '-', '_', '=', '+', '{', '}', '[', ']', '\', '|', ':', ';', '"', "'", '<',
+# '>', ',', '.', '?', '/', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+
+while True:
+	line = raw_input()
+	formatted = line.replace('?', '').lower()
+	if formatted.strip() == "are you there":
+		print "I'm always there Nik . . ."
+		sys.stdout.flush()
